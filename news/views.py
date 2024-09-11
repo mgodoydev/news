@@ -4,11 +4,25 @@ from .models import News
 import requests
 from django.conf import settings
 from django.core.paginator import Paginator
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 # Create your views here.
 
 def home(request):
     return render(request, 'home.html')
+
+def signup(request):
+    return render(request, 'signup.html',{
+        'form': UserCreationForm()
+    })
+
+def signin(request):
+    return render(request, 'signin.html',{
+        'form': AuthenticationForm
+    })
+
+def logout(request):
+    return render(request, 'logout.html')
 
 def get_news(request):
     category = request.GET.get('category', 'sports')  # Obtén la categoría de los parámetros GET
