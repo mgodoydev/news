@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}News{% endblock %}
+
+{% block content %}
+
+<h1>Signin</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form_as.p}}
+</form>
+
+{% endblock %}

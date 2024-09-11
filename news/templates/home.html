@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="text-center py-8">
+    <h2 class="text-3xl font-bold mb-4">Welcome to My News Site</h2>
+    <p class="text-lg text-gray-700">Stay updated with the latest news from around the world.</p>
+    <a href="{% url 'news' %}" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700">See Latest News</a>
+</div>
+{% endblock %}
