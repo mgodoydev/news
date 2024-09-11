@@ -7,40 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% tailwind_css %}
     <title>News</title>
-    <style>
-        /* Puedes agregar estilos personalizados aquí si es necesario */
-    </style>
 </head>
-<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 font-sans">
+
     <!-- Header -->
-    <header class="bg-blue-800 text-white py-4">
+    <header class="bg-gray-900 text-white py-4 shadow-lg">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="{% url 'home' %}" class="text-2xl font-bold">News</a>
+            <a href="{% url 'home' %}" class="text-3xl font-semibold tracking-wide">IX News</a>
             <button id="menu-toggle" class="block lg:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
-            <nav id="menu" class="hidden lg:flex space-x-4">
-                <a href="{% url 'home' %}" class="hover:text-gray-300">Home</a>
-                <a href="{% url 'news' %}" class="hover:text-gray-300">News</a>
-                <a href="{% url 'signup' %}" class="hover:text-gray-300">Signup</a>
-                <a href="{% url 'signin' %}" class="hover:text-gray-300">Signin</a>
-                <a href="{% url 'logout' %}" class="hover:text-gray-300">Logout</a>
-                <!-- Agrega más enlaces si es necesario -->
+            <nav id="menu" class="hidden lg:flex space-x-8"> <!-- Aumentar el espaciado horizontal -->
+                <a href="{% url 'home' %}" class="text-gray-300 hover:text-white transition">Home</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'news' %}" class="text-gray-300 hover:text-white transition">News</a>
+                <a href="{% url 'logout' %}" class="text-gray-300 hover:text-white transition">Logout</a>
+                {% else %}
+                <a href="{% url 'signin' %}" class="text-gray-300 hover:text-white transition">Signin</a>
+                <a href="{% url 'signup' %}" class="text-gray-300 hover:text-white transition">Signup</a>
+                {% endif %}
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto my-8 px-4">
+    <main class="container mx-auto my-12 px-4">
         {% block content %}
         <!-- Contenido de las páginas aquí -->
         {% endblock %}
     </main>
 
     <!-- Footer -->
-    <footer class="bg-blue-800 text-white py-4">
+    <footer class="bg-gray-900 text-gray-400 py-6 mt-12 border-t border-gray-700">
         <div class="container mx-auto text-center">
             <p>&copy; 2024 IX News. All rights reserved.</p>
         </div>

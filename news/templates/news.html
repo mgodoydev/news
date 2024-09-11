@@ -3,10 +3,10 @@
 {% block title %}News{% endblock %}
 
 {% block content %}
-<div class="flex justify-between items-center mb-4">
-    <form method="get" action="{% url 'news' %}" class="flex items-center space-x-2">
-        <label for="category" class="text-sm font-medium text-gray-00">Category:</label>
-        <select id="category" name="category" class="bg-white border border-gray-300 text-gray-900 rounded-lg p-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+<div class="flex justify-between items-center mb-6">
+    <form method="get" action="{% url 'news' %}" class="flex items-center space-x-4">
+        <label for="category" class="text-sm font-medium text-gray-200">Category:</label>
+        <select id="category" name="category" class="bg-white-800 border border-gray-700 text-gray-900 rounded-lg p-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 w-40">
             <option value="sports" {% if current_category == 'sports' %}selected{% endif %}>Sports</option>
             <option value="technology" {% if current_category == 'technology' %}selected{% endif %}>Technology</option>
             <option value="politics" {% if current_category == 'politics' %}selected{% endif %}>Politics</option>
@@ -16,36 +16,36 @@
     </form>
 </div>
 
-<div class="news-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="news-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {% if news %}
         {% for news_item in news %}
-            <div class="news-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="news-card bg-gray-800 border border-gray-700 rounded-lg shadow-md overflow-hidden">
                 {% if news_item.url_to_image %}
                     <img src="{{ news_item.url_to_image }}" alt="{{ news_item.title }}" class="w-full h-48 object-cover">
                 {% endif %}
                 <div class="p-4">
-                    <h2 class="text-xl font-semibold text-gray-900">{{ news_item.title }}</h2>
-                    <p class="mt-2 text-gray-900">{{ news_item.description }}</p>
-                    <a href="{{ news_item.url }}" class="text-gray-900 hover:underline" target="_blank">Read more...</a>
-                    <p class="mt-2 text-gray-900 text-sm">Source: {{ news_item.source }}</p>
-                    <p class="mt-1 text-gray-900 text-xs">Published at: {{ news_item.published_at|date:"M d, Y" }}</p>
+                    <h2 class="text-xl font-semibold text-white">{{ news_item.title }}</h2>
+                    <p class="mt-2 text-gray-300">{{ news_item.description }}</p>
+                    <a href="{{ news_item.url }}" class="text-blue-400 hover:underline" target="_blank">Read more...</a>
+                    <p class="mt-2 text-gray-400 text-sm">Source: {{ news_item.source }}</p>
+                    <p class="mt-1 text-gray-500 text-xs">Published at: {{ news_item.published_at|date:"M d, Y" }}</p>
                 </div>
             </div>
         {% endfor %}
     {% else %}
-        <p class="text-center text-gray-700">No news available.</p>
+        <p class="text-center text-gray-400">No news available.</p>
     {% endif %}
 </div>
 
 <!-- Paginación -->
-<div class="flex justify-center mt-6">
+<div class="flex justify-center mt-8">
     <div class="flex space-x-2">
         {% if page_obj.has_previous %}
             <a href="?category={{ current_category }}&page=1" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">First</a>
             <a href="?category={{ current_category }}&page={{ page_obj.previous_page_number }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Previous</a>
         {% endif %}
 
-        <span class="px-4 py-2 bg-gray-200 text-gray-200 rounded-lg">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+        <span class="px-4 py-2 bg-gray-700 text-gray-300 rounded-lg">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
 
         {% if page_obj.has_next %}
             <a href="?category={{ current_category }}&page={{ page_obj.next_page_number }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Next</a>

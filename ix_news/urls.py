@@ -25,5 +25,5 @@ urlpatterns = [
     path('news/', views.get_news, name='news'),
     path('signup/', views.signup, name='signup'),
     path('signin/', views.signin, name='signin'),
-    path('logout/', views.logout, name='logout'),
+    path('logout/', views.signout, name='logout'),
 ]

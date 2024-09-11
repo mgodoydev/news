@@ -3,9 +3,24 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="text-center py-8">
-    <h2 class="text-3xl font-bold mb-4">Welcome to My News Site</h2>
-    <p class="text-lg text-gray-700">Stay updated with the latest news from around the world.</p>
-    <a href="{% url 'news' %}" class="mt-4 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700">See Latest News</a>
+<div class="text-center py-12">
+    <h2 class="text-4xl font-semibold mb-6 text-white">Welcome to IX News</h2>
+    {% if not user.is_authenticated %}
+    <div class="mt-6 max-w-lg mx-auto bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg shadow-lg p-6">
+        <p class="text-lg text-gray-200">Stay informed with the latest and most important news from around the world. Sign up now to get access to all our news and updates!</p>
+        <a href="{% url 'signin' %}" class="mt-6 inline-block px-8 py-3 bg-gray-700 text-white rounded-md shadow-lg hover:bg-gray-600 transition">
+            Sign in
+        </a>
+        <a href="{% url 'signup' %}" class="mt-6 inline-block px-8 py-3 bg-gray-700 text-white rounded-md shadow-lg hover:bg-gray-600 transition">
+            Sign up
+        </a>
+    </div>
+{% else %}
+    <div class="mt-6 max-w-lg mx-auto bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-lg shadow-lg p-6">
+        <p>
+            We're thrilled to have you here. To stay fully updated with the latest and most critical news from around the globe, consider signing up for our exclusive membership. By registering, you'll gain access to a wealth of information, including in-depth articles, breaking news, and personalized updates that matter to you. Don’t miss out on any important stories—join our community today and be in the know!
+        </p>
+    </div>
+{% endif %}
 </div>
 {% endblock %}
