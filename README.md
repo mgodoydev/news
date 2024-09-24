@@ -1,0 +1,1 @@
+Este proyecto es un portal de noticias desarrollado con Django. Permite a los usuarios leer sobre noticias de diversas categorías. La plataforma está diseñada para ser intuitiva y responsiva, ofreciendo una experiencia de usuario fluida tanto en dispositivos móviles como en escritorio.
